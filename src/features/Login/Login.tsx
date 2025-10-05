@@ -17,8 +17,8 @@ export default function Login() {
       alert(res.data.message);
       
       navigate("/");
-    }catch (error){
-      console.error("error koli back",error);
+    }catch {
+      alert("نام کاربری و رمز عبور اشتباه می باشد")
     }
     
   };
