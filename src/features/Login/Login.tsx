@@ -1,8 +1,11 @@
 import {useState} from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   
+
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,7 +14,9 @@ export default function Login() {
     e.preventDefault();
     try{
       const res = await axios.post("https://localhost:7112/api/login", {userName, password});
-      alert(res.data.message)
+      alert(res.data.message);
+      
+      navigate("/");
     }catch (error){
       console.error("error koli back",error);
     }
