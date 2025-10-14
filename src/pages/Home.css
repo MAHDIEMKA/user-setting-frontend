@@ -1,5 +1,6 @@
 .main{
-    background-color: rgb(211, 74, 74);
+    background: #020024;
+    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(63, 57, 168, 1) 27%, rgba(0, 212, 255, 1) 82%);
     height: 950px;
 }
 
