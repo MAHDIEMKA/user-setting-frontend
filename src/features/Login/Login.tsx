@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Box, Typography } from '@mui/material';
+import './Login.css'
 
 export default function Login() {
   
@@ -22,23 +23,32 @@ export default function Login() {
       navigate("/");
     }catch (error: any) {
       alert(error.response?.data?.message || "نام کاربری و رمز عبور اشتباه می باشد")
+      console.log(error);
     }finally{
       setLoading(false);
     }
     
   };
 
+  const handleBackToHome = (e) => {
+    e.preventDefault();
+
+    navigate("/");
+  }
+
   
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      height="100vh"
-      bgcolor="#5a5959"
-      p={2}
-    >
+    <div className="main-login">
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        height="100vh"
+        bgcolor="#5a5959"
+        p={2}
+      >
+        <button className="button-back" onClick={handleBackToHome}>بازگشت به صفحه اصلی</button>
         <Typography variant='h4' mb={2}>
           ورود به حساب کاربری
         </Typography>
@@ -47,8 +57,10 @@ export default function Login() {
           onSubmit={handelSubmit}
           display="flex"
           flexDirection="column"
+          justifyContent="space-around"
           gap={2}
-          width={300}
+          width={350}
+          height={350}
           p={3}
           bgcolor="#fff"
           borderRadius={2}
@@ -72,33 +84,14 @@ export default function Login() {
           <Button
             type="submit"
             variant="contained"
+            style={{height: "50px", borderRadius: "10px"}}
             color="primary"
             disabled={loading}
           >
-            {loading? "ورود" : "درحال ورود ..."}
+            {loading? "درحال ورود ..." : "ورود"}
           </Button>
         </Box>
-    </Box>
-    
-    // <div className="flex items-center justify-center h-screen">
-    //   <form  className="p-6 rounded-lg shadow-md bg-white w-80">
-    //     <h2 className="text-xl font-bold mb-4">login</h2>
-    //     <input
-    //       type="text"
-    //       placeholder="UserName Or Email"
-    //       className="border p-2 w-full mb-3 rounded"
-    //       value={userName}
-    //       onChange={(e) => setUserName(e.target.value)}
-    //     />
-    //     <input
-    //       type="password"
-    //       placeholder="Password"
-    //       className="border p-2 w-full mb-3 rounded"
-    //       value={password}
-    //       onChange={(e) => setPassword(e.target.value)}
-    //     />
-    //     <button className="bg-blue-500 text-white w-full py-2 rounded hover:bg-blue-600" onClick={handelSubmit}>Login</button>
-    //   </form>
-    // </div>
+      </Box>
+    </div>
   )
 }
