@@ -53,7 +53,7 @@ export default function Register() {
       >
         <Button className="button-back" type="submit" variant="contained" onClick={handleBackToHome} sx={{position:"absolute", top:16, left:16}}>بازگشت به صفحه اصلی</Button>
         <Typography variant='h4' mb={2}>
-          ورود به حساب کاربری
+          ثبت نام
         </Typography>
         <Box
           component="form"
