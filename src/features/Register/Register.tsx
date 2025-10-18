@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Button, Box, Typography} from '@mui/material';
 import "./Register.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Register() {
   
@@ -11,6 +12,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   
 
 
@@ -36,6 +38,10 @@ export default function Register() {
 
     navigate("/");
   }
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
   
   
   
@@ -93,7 +99,7 @@ export default function Register() {
           </div>
           <div className="input-container-register">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -101,6 +107,9 @@ export default function Register() {
               required
             />
             <label htmlFor="password">رمز عبور</label>
+            <span className="eye-icon" onClick={toggleShowPassword}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
           </div>
           <Button
             type="submit"

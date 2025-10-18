@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { TextField, Button, Box, Typography } from '@mui/material';
+import {Button, Box, Typography } from '@mui/material';
 import './Login.css'
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Login() {
   
@@ -11,7 +12,7 @@ export default function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const [showPassword, setShowPassword] = useState(false);
 
   const handelSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,6 +36,10 @@ export default function Login() {
 
     navigate("/");
   }
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   
   return (
@@ -79,7 +84,7 @@ export default function Login() {
           </div>
           <div className="input-container-login">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -87,6 +92,9 @@ export default function Login() {
               required
             />
             <label htmlFor="password">رمز عبور</label>
+            <span className="eye-icon" onClick={toggleShowPassword}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
           </div>
           <Button
             type="submit"
