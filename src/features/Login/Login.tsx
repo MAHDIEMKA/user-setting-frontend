@@ -17,7 +17,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try{
-      const res = await axios.post("https://localhost:7112/api/login", {userName, password});
+      const res = await axios.post("https://localhost:7112/api/login/login", {userName, password});
       alert(res.data.message);
       
       navigate("/");
@@ -48,7 +48,7 @@ export default function Login() {
         bgcolor="#5a5959"
         p={2}
       >
-        <button className="button-back" onClick={handleBackToHome}>بازگشت به صفحه اصلی</button>
+        <Button className="button-back" type="submit" variant="contained" onClick={handleBackToHome} sx={{position:"absolute", top:16, left:16}}>بازگشت به صفحه اصلی</Button>
         <Typography variant='h4' mb={2}>
           ورود به حساب کاربری
         </Typography>
@@ -66,21 +66,28 @@ export default function Login() {
           borderRadius={2}
           boxShadow={3}
         >
-          <TextField
-            label="نام کاربری"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-            fullWidth
-            required
-          />
-          <TextField 
-            label="رمز عبور"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            fullWidth
-            required
-          />
+          <div className="input-container-login">
+            <input
+              type="text"
+              id="username"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder=" "
+              required
+            />
+            <label htmlFor="username">نام کاربری</label>
+          </div>
+          <div className="input-container-login">
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder=" "
+              required
+            />
+            <label htmlFor="password">رمز عبور</label>
+          </div>
           <Button
             type="submit"
             variant="contained"

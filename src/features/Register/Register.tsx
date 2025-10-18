@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { TextField, Button, Box, Typography } from '@mui/material';
+import { Button, Box, Typography} from '@mui/material';
+import "./Register.css";
 
 export default function Register() {
   
@@ -10,6 +11,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  
 
 
   const handelSubmit = async (e: React.FormEvent) => {
@@ -19,9 +21,10 @@ export default function Register() {
       const res = await axios.post("https://localhost:7112/api/login/register", {userName, email, password});
       alert(res.data.message);
       
-      navigate("/");
+      navigate("/login");
     }catch (error: any) {
-      alert(error.response?.data?.message || "نام کاربری و رمز عبور اشتباه می باشد")
+      alert(error.response?.data?.message || "خطا در ثبت نام")
+      console.log(error);
     }finally{
       setLoading(false);
     }
@@ -39,6 +42,7 @@ export default function Register() {
   return (
     <div className="main-login">
       <Box
+        className="box"
         display="flex"
         flexDirection="column"
         alignItems="center"
@@ -47,7 +51,7 @@ export default function Register() {
         bgcolor="#5a5959"
         p={2}
       >
-        <button className="button-back" onClick={handleBackToHome}>بازگشت به صفحه اصلی</button>
+        <Button className="button-back" type="submit" variant="contained" onClick={handleBackToHome} sx={{position:"absolute", top:16, left:16}}>بازگشت به صفحه اصلی</Button>
         <Typography variant='h4' mb={2}>
           ورود به حساب کاربری
         </Typography>
@@ -65,29 +69,39 @@ export default function Register() {
           borderRadius={2}
           boxShadow={3}
         >
-          <TextField
-            label="نام کاربری"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-            fullWidth
-            required
-          />
-          <TextField 
-            label="ایمیل"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            fullWidth
-            required
-          />
-          <TextField 
-            label="رمز عبور"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            fullWidth
-            required
-          />
+          <div className="input-container-register">
+            <input
+              type="text"
+              id="username"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder=" "
+              required
+            />
+            <label htmlFor="username">نام کاربری</label>
+          </div>
+          <div className="input-container-register">
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder=" "
+              required
+            />
+            <label htmlFor="email">ایمیل</label>
+          </div>
+          <div className="input-container-register">
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder=" "
+              required
+            />
+            <label htmlFor="password">رمز عبور</label>
+          </div>
           <Button
             type="submit"
             variant="contained"
