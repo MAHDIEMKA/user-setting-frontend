@@ -103,7 +103,7 @@ export default function Login() {
             color="primary"
             disabled={loading}
           >
-            {loading? "درحال ورود ..." : "ورود"}
+            {loading? "درحال ثبت ..." : "ثبت"}
           </Button>
         </Box>
       </Box>
