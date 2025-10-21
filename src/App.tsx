@@ -5,6 +5,7 @@ import Register from './features/Register/Register';
 import "./App.css";
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />}/>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

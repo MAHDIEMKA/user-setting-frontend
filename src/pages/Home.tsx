@@ -2,6 +2,7 @@
 import Dashboard from './Dashboard/Dashboard';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 export default function Home() {
   
@@ -10,21 +11,20 @@ export default function Home() {
   const handleSubmitLogin = (e) => {
     e.preventDefault();
 
-    navigate("login");
+    navigate("/login");
   }
   const handleSubmitRegister = (e) => {
     e.preventDefault();
-    navigate("register");
+    navigate("/register");
   }
   
   
   return (
     <div className="main">
-      <Dashboard/>
       <div className="container">
-        <h1>صفحه مدیریت کاربران</h1>
-        <button onClick={handleSubmitLogin}>ورود</button>
-        <button onClick={handleSubmitRegister}>ثبت نام</button>
+        <h1 className="title-home">صفحه مدیریت کاربران</h1>
+        <Button className="button-login" type="submit" variant="contained" onClick={handleSubmitLogin}>ورود</Button>
+        <Button className="button-register" type="submit" variant="contained" onClick={handleSubmitRegister}>ثبت نام</Button>
       </div>
     </div>
   )

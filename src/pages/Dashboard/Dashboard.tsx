@@ -1,6 +1,7 @@
 import React from "react";
 import { FaUser, FaShoppingCart, FaDollarSign, FaBoxOpen, FaUsers } from "react-icons/fa";
 import "./Dashboard.css"
+import Home from "../Home";
 
 export default function Dashboard() {
   
@@ -36,6 +37,7 @@ export default function Dashboard() {
         ))}
       </div>
     </div>
+    <Home/>
     </>
   );
 }
