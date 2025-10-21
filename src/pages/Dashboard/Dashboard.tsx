@@ -20,11 +20,12 @@ export default function Dashboard() {
     <Box
       sx={{
         p: 6,
-        width: "15%",
-        background: "linear-gradient(90deg, #1307ec 0%, #433cc0 27%, #00d4ff 82%)",
+        width: "13%",
+        background: "linear-gradient(90deg, #afadda 0%, #433cc0 0%, #00d4ff 82%)",
         // minHeight: "100vh",
         // border: "50px solid black"
-        height: "100vh"
+        height: "97vh",
+        borderRadius: "10px"
       }}
     >
       <Typography
@@ -38,14 +39,12 @@ export default function Dashboard() {
 
       <Box
         sx={{
-          width: "100%",
-          height: "10%",
+          width: "100wh",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-start", // کارت‌ها زیر هم قرار می‌گیرن
+          justifyContent: "center", // کارت‌ها زیر هم قرار می‌گیرن
           gap: 3,
           alignItems: "center",
-          // border: "50px solid black"
         }}
       >
         {cards.map((card, index) => (
@@ -69,7 +68,7 @@ export default function Dashboard() {
                 cursor: "pointer",
                 position: "relative",
                 overflow: "hidden",
-                p: 3,
+                p: 2,
                 transition: "0.4s",
                 width: "100%",
                 "&:hover": {
@@ -83,8 +82,6 @@ export default function Dashboard() {
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  width: "100%",
-                  height: "100%",
                   background:
                     "linear-gradient(135deg, rgba(255,255,255,0.15), transparent)",
                   opacity: 0,
@@ -93,16 +90,10 @@ export default function Dashboard() {
                 }}
               />
 
-              <CardContent sx={{ zIndex: 1 }}>
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <Box sx={{ mr: 2, fontSize: 40 }}>{card.icon}</Box>
-                  <Typography variant="h6" fontWeight="bold">
+              <CardContent sx={{height:"5px" }}>
+                <Typography variant="h6" fontWeight="bold">
                     {card.title}
                   </Typography>
-                </Box>
-                <Typography variant="h4" fontWeight="900">
-                  {card.value}
-                </Typography>
               </CardContent>
             </Card>
           </motion.div>
