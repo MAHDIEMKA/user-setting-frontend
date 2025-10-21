@@ -20,7 +20,7 @@ export default function Register() {
     e.preventDefault();
     setLoading(true);
     try{
-      const res = await axios.post("https://localhost:7112/api/login/register", {userName, email, password});
+      const res = await axios.post("https://localhost:7112/api/register/register", {userName, email, password});
       alert(res.data.message);
       
       navigate("/login");
