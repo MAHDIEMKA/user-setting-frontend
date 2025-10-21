@@ -1,6 +1,6 @@
 .main{
     background: #020024;
-    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(63, 57, 168, 1) 27%, rgba(0, 212, 255, 1) 82%);
+    background: linear-gradient(90deg,rgb(19, 7, 236) 0%, rgb(67, 60, 192) 27%, rgba(0, 212, 255, 1) 82%);
     display: flex;
     justify-content: center;
     align-items: center;

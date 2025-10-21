@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import {Button, Box, Typography, Alert, Modal } from '@mui/material';
+import {Button, Box, Typography, Alert, Modal, CircularProgress } from '@mui/material';
 import './Login.css'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -29,7 +29,7 @@ export default function Login() {
       setTimeout(() => {
         setModalOpen(false);
         navigate("/dashboard");
-      },1500);
+      },5000);
       
     }catch (error: any) {
       setErrorMessage(error.response?.data?.message || "نام کاربری و رمز عبور اشتباه می باشد");
@@ -83,6 +83,7 @@ export default function Login() {
               <CheckCircleOutlineIcon color="success" sx={{ml: 6}}/>
               {loginMessage}
             </Typography>
+            <CircularProgress sx={{mr: 3}}/>
           </Box>
         </Modal>
       )}
